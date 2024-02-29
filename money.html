@@ -207,33 +207,35 @@
         }
 
         function newGame() {
-            monsterLocation = Math.floor(Math.random() * 35);
-            fancyCoinLocations = [];
+        monsterLocation = Math.floor(Math.random() * 35);
+        fancyCoinLocations = [];
 
-            while (fancyCoinLocations.length < 6) {
-                var randomValue = Math.floor(Math.random() * 35);
-                if (!fancyCoinLocations.includes(randomValue) && randomValue !== monsterLocation) {
+        while (fancyCoinLocations.length < 6) {
+            var randomValue = Math.floor(Math.random() * 35);
+            if (!fancyCoinLocations.includes(randomValue) && randomValue !== monsterLocation) {
                 fancyCoinLocations.push(randomValue);
-
-                }
             }
-            console.log(fancyCoinLocations);
-            console.log(monsterLocation);
-
-            locations = 0
-            score = 0
-            lastLocation = 0
-            gameOver = false
-            score.innerHTML = "Score is " + score;
-            locations.innerHTML = "Number of locations checked is " + locations;
-            for (i = 0; i < 35; i++) {
-                document.getElementById("location" + i).firstChild.src = "building.jpg";
-            }
-            document.getElementById("help").innerHTML = "Help report";
-
         }
 
-    </script>
+        console.log(fancyCoinLocations);
+        console.log(monsterLocation);
+
+        locations = 0;
+        score = 0;
+        lastLocation = 0;
+        gameOver = false;
+
+        document.getElementById("locations").innerHTML = "Number of locations checked is " + locations + ".";
+        document.getElementById("score").innerHTML = "Score is " + score + ".";
+
+        for (i = 0; i < 35; i++) {
+            document.getElementById("location" + i).firstChild.src = "building.jpg";
+        }
+
+        document.getElementById("help").innerHTML = "Help report";
+    }
+</script>
+
 </body>
 
 </html>
