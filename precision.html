@@ -8,6 +8,33 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+    .container {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    h2 {
+        color: navy;
+    }
+
+    #target {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    #counter {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 18px;
+        margin: 0 10px;
+        cursor: pointer;
+    }
+</style>
 </head>
 <body>
 
@@ -15,8 +42,8 @@
       <h2>Anjali Erupaka Speed Check</h2>
       <div id="target">Your time: </div>
       <div id="counter">Count: </div>
-      <button onclick="startTime()">Start Timer</button>
-      <button onclick="recordTime()">Stop Timer</button>
+      <button onclick="startTime()" style="background-color: green; color: white;">Start Timer</button>
+      <button onclick="recordTime()" style="background-color: red; color: white;">Stop Timer</button>
     </div>
   
     <script>
