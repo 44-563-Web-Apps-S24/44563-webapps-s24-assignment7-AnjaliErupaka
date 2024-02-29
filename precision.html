@@ -41,36 +41,42 @@
     <div class="container">
       <h2>Anjali Erupaka Speed Check</h2>
       <div id="target">Your time: </div>
+
       <div id="counter">Count: </div>
-      <button onclick="startTime()" style="background-color: green; color: white;">Start Timer</button>
-      <button onclick="recordTime()" style="background-color: red; color: white;">Stop Timer</button>
+    
+      <button id="startBtn" class="btn btn-primary" onclick="startTime()">Start Timer</button>
+      <button id="stopBtn" class="btn btn-danger">Stop Timer</button>
     </div>
   
     <script>
-      let stopTime;
-
-      function recordTime() {
-        stopTime = Date.now();
-        console.log(stopTime);
+      let stopTime = undefined;
+  
+      function countdown() {
+        countdownstart = Math.floor(Math.random() * 9) + 2;
+        for (let i = 0; i < countdownstart; i++) {
+          setTimeout(() => {
+            document.getElementById('counter').innerHTML = i;
+          }, (countdownstart - i) * 1000);
+        }
+  
+        setTimeout(() => {
+          if (stopTime === undefined) {
+            document.getElementById('target').textContent = "Too Slow";
+          } else {
+            const elapsedTime = stopTime - (Date.now() - 4000);
+            document.getElementById('target').textContent = "Time was " + elapsedTime + " milliseconds";
+          }
+        }, 4000);
       }
   
-      function startTime() {
-              for (let i = 0; i < 5; i++) {
-                  setTimeout(() => {
-            document.getElementById('counter').innerHTML = "Count: " + i;
-                  }, (4 - i) * 1000);
-              }
-              setTimeout(() => {
-                  if (!stopTime) {
-                      document.getElementById('target').innerHTML = "Too Slow";
-                  } else {
-                      let timeElapsed = stopTime - (Date.now() - 4000);
-                      document.getElementById('target').innerHTML = "Time was " +timeElapsed+ " milliseconds";
-                  }
-              }, 4000);
-          }
-    </script>
-    
-  </body>
+      document.getElementById('startBtn').onclick = countdown;
   
+      function recordTime() {
+        stopTime = Date.now();
+        console.log("Stop Time: ", stopTime);
+      }
+      
+      document.getElementById('stopBtn').onclick = recordTime;
+    </script>
+  </body>
   </html>

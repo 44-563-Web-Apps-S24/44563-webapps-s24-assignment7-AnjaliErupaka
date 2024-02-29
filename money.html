@@ -13,7 +13,6 @@
             padding: 0;
             box-sizing: border-box;
             background-color: #e1e4e2;
-            color: black;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -48,6 +47,7 @@
             overflow: hidden;
             background-color: #0f0101;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease-in-out;
         }
 
         img {
@@ -56,6 +56,15 @@
             object-fit: cover;
         }
 
+        .btn {
+            background-color: #05f0b5;
+            color: rgb(12, 12, 12);
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
 </style>
 
 <body>
@@ -67,7 +76,8 @@
     <p class="click" onclick="help()">Click for help.</p>
 
     <p id="help">Help report</p>
-    
+    <button type="button" class="btn" onclick="newGame()">New Game</button>
+
 
     <div class="row">
         <div class="location" id="location0" onclick="check(0)"><img src="building.jpg" alt="Building"></div>
@@ -132,6 +142,7 @@
     </div>
 
 
+
     <script>
              var position_IDs = ["location0", "location1", "location2", "location3", "location4", "location5",
         "location6", "location7", "location8", "location9", "location10", "location11", "location12",
@@ -169,9 +180,9 @@
                     score += 1;
                 }
                 locations += 1;
-                locationsElement.innerHTML = "Number of locations checked is " + locations + ".";
-            scoreElement.innerHTML = "Score is " + score + ".";
-            lastLocation = position;
+                document.getElementById("locations").innerHTML = "Number of locations checked is " + locations + ".";
+                document.getElementById("score").innerHTML = "Score is " + score + ".";
+                lastLocation = position;
             }
         }
 
@@ -213,14 +224,15 @@
             score = 0
             lastLocation = 0
             gameOver = false
-            scoreElement.innerHTML = "Score is " + score + ".";
-            locationsElement.innerHTML = "Number of locations checked is " + locations + ".";
-            for (var i = 0; i < 35; i++) {
+            score.innerHTML = "Score is " + score;
+            locations.innerHTML = "Number of locations checked is " + locations;
+            for (i = 0; i < 35; i++) {
                 document.getElementById("location" + i).firstChild.src = "building.jpg";
             }
             document.getElementById("help").innerHTML = "Help report";
 
         }
+
     </script>
 </body>
 
